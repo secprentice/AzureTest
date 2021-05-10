@@ -23,7 +23,8 @@
                 "description": "Redscan MSSP Sentinel Deployment"
             },
             "defaultValue": "Redscan MSSP Sentinel Deployment"
-        },             
+        },
+             
     },
     "variables": {
         "mspRegistrationName": "[guid(parameters('mspOfferName'))]",
