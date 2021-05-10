@@ -1,18 +1,28 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "mspOfferName": {
-            "value": "Redscan MSSP Sentinel Deployment"
-        },
-		 "rgName": {
-            "value": "redscansentinelworkspace"
+            "type": "string",
+            "metadata": {
+                "description": "Redscan MSSP Sentinel Deployment"
+            },
+            "defaultValue": "Redscan MSSP Sentinel Deployment"
+
         },
         "mspOfferDescription": {
-            "value": "Redscan MSSP Sentinel Deployment"
+            "type": "string",
+            "metadata": {
+                "description": "Redscan MSSP Sentinel Deployment"
+            },
+            "defaultValue": "Redscan MSSP Sentinel Deployment"
         },
         "managedByTenantId": {
-            "value": "23d05f70-8fdc-4a4f-bbf2-66d80958942a"
+            "type": "string",
+            "metadata": {
+                "description": "23d05f70-8fdc-4a4f-bbf2-66d80958942a"
+            },
+            "defaultValue": "23d05f70-8fdc-4a4f-bbf2-66d80958942a"
         },
         "authorizations": {
             "value": [
@@ -61,6 +71,44 @@
                     ]
                 }   
             ]
+        }            
+    },
+    "variables": {
+        "mspRegistrationName": "[guid(parameters('mspOfferName'))]",
+        "mspAssignmentName": "[guid(parameters('mspOfferName'))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.ManagedServices/registrationDefinitions",
+            "apiVersion": "2019-09-01",
+            "name": "[variables('mspRegistrationName')]",
+            "properties": {
+                "registrationDefinitionName": "[parameters('mspOfferName')]",
+                "description": "[parameters('mspOfferDescription')]",
+                "managedByTenantId": "[parameters('managedByTenantId')]",
+                "authorizations": "[parameters('authorizations')]"
+            }
+        },
+        {
+            "type": "Microsoft.ManagedServices/registrationAssignments",
+            "apiVersion": "2019-09-01",
+            "name": "[variables('mspAssignmentName')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.ManagedServices/registrationDefinitions/', variables('mspRegistrationName'))]"
+            ],
+            "properties": {
+                "registrationDefinitionId": "[resourceId('Microsoft.ManagedServices/registrationDefinitions/', variables('mspRegistrationName'))]"
+            }
+        }
+    ],
+    "outputs": {
+        "mspOfferName": {
+            "type": "string",
+            "value": "[concat('Managed by', ' ', parameters('mspOfferName'))]"
+        },
+        "authorizations": {
+            "type": "array",
+            "value": "[parameters('authorizations')]"
         }
     }
 }
