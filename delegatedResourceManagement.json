@@ -23,7 +23,55 @@
                 "description": "Redscan MSSP Sentinel Deployment"
             },
             "defaultValue": "Redscan MSSP Sentinel Deployment"
-        },           
+        },
+        "authorizations": {
+            "value": [
+                { 
+                    "principalId": "47de53bc-08e1-484f-99a8-9b4a2268e884", 
+                    "roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c",
+                    "principalIdDisplayName": "Redscan Engineers Level 2" 
+                },
+				{ 
+                    "principalId": "47de53bc-08e1-484f-99a8-9b4a2268e884", 
+                    "roleDefinitionId": "ab8e14d6-4a74-4a29-9ba8-549422addade",
+                    "principalIdDisplayName": "Redscan Engineers Level 1" 
+                },
+				{ 
+                    "principalId": "e6421213-10d7-4a31-a2d1-20bdff266381", 
+                    "roleDefinitionId": "ab8e14d6-4a74-4a29-9ba8-549422addade",
+                    "principalIdDisplayName": "Redscan Engineers Level 2" 
+                },
+				{ 
+                    "principalId": "3660bbd0-394a-473a-a948-55ac3aa2a4b4", 
+                    "roleDefinitionId": "8d289c81-5878-46d4-8554-54e1e3d8b5cb",
+                    "principalIdDisplayName": "Redscan SOC Analyst Level 1" 
+                },
+				{ 
+                    "principalId": "2958b28c-58f9-41c1-90a3-2033b4b26979", 
+                    "roleDefinitionId": "ab8e14d6-4a74-4a29-9ba8-549422addade",
+                    "principalIdDisplayName": "Redscan SOC Analyst Level 2" 
+                },
+				{ 
+                    "principalId": "2958b28c-58f9-41c1-90a3-2033b4b26979", 
+                    "roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c",
+                    "principalIdDisplayName": "Redscan SOC Analyst Level 2" 
+                },
+                { 
+                    "principalId": "c005742b-6cd5-403a-b433-612f43d0fe8a", 
+                    "roleDefinitionId": "91c1777a-f3dc-4fae-b103-61d183457e46",
+                    "principalIdDisplayName": "SentinelOnboardingAdmin" 
+                },
+                {
+                    "principalId": "c005742b-6cd5-403a-b433-612f43d0fe8a",
+                    "principalIdDisplayName": "SentinelOnboardingAdmin",
+                    "roleDefinitionId": "18d7d88d-d35e-4fb5-a5c3-7773c20a72d9",
+                    "delegatedRoleDefinitionIds": [
+                        "b24988ac-6180-42a0-ab88-20f7382dd24c",
+                        "92aaf0da-9dab-42b6-94a3-d43ce8d16293"
+                    ]
+                }   
+            ]
+        }              
     },
     "variables": {
         "mspRegistrationName": "[guid(parameters('mspOfferName'))]",
