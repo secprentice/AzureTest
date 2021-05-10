@@ -3,26 +3,16 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "mspOfferName": {
-            "type": "string",
-            "metadata": {
-                "description": "Redscan MSSP Sentinel Deployment"
-            },
-            "defaultValue": "Redscan MSSP Sentinel Deployment"
-
+            "value": "Redscan MSSP Sentinel Deployment"
+        },
+		 "rgName": {
+            "value": "redscansentinelworkspace"
         },
         "mspOfferDescription": {
-            "type": "string",
-            "metadata": {
-                "description": "Redscan MSSP Sentinel Deployment"
-            },
-            "defaultValue": "Redscan MSSP Sentinel Deployment"
+            "value": "Redscan MSSP Sentinel Deployment"
         },
         "managedByTenantId": {
-            "type": "string",
-            "metadata": {
-                "description": "23d05f70-8fdc-4a4f-bbf2-66d80958942a"
-            },
-            "defaultValue": "23d05f70-8fdc-4a4f-bbf2-66d80958942a"
+            "value": "23d05f70-8fdc-4a4f-bbf2-66d80958942a"
         },
         "authorizations": {
             "value": [
@@ -71,7 +61,7 @@
                     ]
                 }   
             ]
-        }            
+        }
     },
     "variables": {
         "mspRegistrationName": "[guid(parameters('mspOfferName'))]",
@@ -111,4 +101,4 @@
             "value": "[parameters('authorizations')]"
         }
     }
-}
+} 
